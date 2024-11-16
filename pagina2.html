@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lais💖</title>
+    <!-- Importando a fonte Poppins do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Poppins', sans-serif; /* Fonte atualizada */
             background-color: #ffe4e1;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Remove barra de rolagem horizontal */
         }
         nav {
             background-color: #ff69b4;
-            padding: 20px;
+            padding: 10px;
             text-align: center;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -24,16 +25,16 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Adiciona flex wrap para prevenir overflow */
+            flex-wrap: wrap; /* Flexível para mobile */
         }
         nav ul li {
-            margin: 0 10px; /* Reduzi a margem para evitar overflow */
+            margin: 5px;
         }
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-size: 20px;
-            padding: 10px 20px;
+            font-size: 18px;
+            padding: 8px 15px;
             background-color: #ff1493;
             border-radius: 10px;
             transition: background-color 0.3s;
@@ -48,20 +49,55 @@
         }
         .content {
             text-align: center;
-            padding: 50px;
+            padding: 20px;
+            margin-bottom: 50px; /* Espaço extra para evitar sobreposição do footer */
         }
         .content h1 {
-            font-size: 50px;
+            font-size: 32px;
             color: #ff1493;
+            margin-bottom: 20px;
         }
         .content p {
-            font-size: 24px;
+            font-size: 16px;
             color: #ff69b4;
+            margin: 10px 0;
         }
         .heart {
             color: #ff1493;
-            font-size: 100px;
+            font-size: 80px;
             animation: beat 1s infinite;
+        }
+        #difficulty-selection {
+            margin-top: 20px;
+        }
+        #difficulty {
+            font-size: 16px;
+            padding: 5px;
+            border: 2px solid #ff1493;
+            border-radius: 5px;
+        }
+        #image-display {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #difficulty-image {
+            width: 100%;
+            max-width: 300px; /* Limita a largura máxima */
+            height: auto; /* Mantém proporção */
+            display: none; /* Oculta inicialmente */
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #ff69b4;
+            text-align: center;
+            padding: 10px;
+            color: white;
+            position: fixed; /* Torna o rodapé fixo */
+            bottom: 0; /* Posiciona na parte inferior */
+            width: 100%; /* Garante que ocupe toda a largura da tela */
+            z-index: 100; /* Certifica-se de que o rodapé ficará sobre outros elementos */
         }
         @keyframes beat {
             0%, 100% {
@@ -71,28 +107,29 @@
                 transform: scale(1.1);
             }
         }
-        footer {
-            background-color: #ff69b4;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            color: white;
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul li a {
+                font-size: 16px;
+                padding: 6px 10px;
+            }
+            .content h1 {
+                font-size: 24px;
+            }
+            .heart {
+                font-size: 60px;
+            }
         }
-        #difficulty-selection {
-            margin-top: 20px; /* Espaço acima da seleção */
-        }
-        #image-display {
-            text-align: center; /* Centraliza a imagem */
-            margin-top: 20px; /* Espaço acima da imagem */
-        }
-        #difficulty-image {
-            width: 300px; /* Define a largura fixa */
-            height: 200px; /* Define a altura fixa */
-            object-fit: cover; /* Mantém a proporção da imagem e cobre o contêiner */
-            display: none; /* Inicialmente oculta a imagem */
-            margin: 0 auto; /* Centraliza a imagem horizontalmente */
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+            }
+            .content h1 {
+                font-size: 20px;
+            }
+            .heart {
+                font-size: 50px;
+            }
         }
     </style>
 </head>
@@ -103,7 +140,7 @@
             <li><a href="index.html">Início</a></li>
             <li><a href="pagina2.html" class="active">Princesa</a></li>
             <li><a href="pagina3.html">A Melhor Playlist</a></li>
-            <li><a href="pagina4.html">Planos Para viagem</a></li>
+            <li><a href="pagina4.html">Nossos Planos</a></li>
         </ul>
     </nav>
 
@@ -121,7 +158,7 @@
                 <option value="1080p">1080p</option>
             </select>
             <div id="image-display">
-                <img id="difficulty-image" src="" alt="">
+                <img id="difficulty-image" src="" alt="Qualidade da Princesa">
             </div>
         </div>
         <p class="heart">❤</p>
@@ -148,9 +185,13 @@
             };
 
             // Define a fonte da imagem e exibe
-            image.src = imageMap[resolution];
-            image.alt = `${resolution} image`;
-            image.style.display = "block"; // Mostra a imagem
+            if (imageMap[resolution]) {
+                image.src = imageMap[resolution];
+                image.alt = `Imagem em ${resolution}`;
+                image.style.display = "block";
+            } else {
+                image.style.display = "none";
+            }
         }
     </script>
 

@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lais💖</title>
+    <!-- Importando a fonte Poppins do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Poppins', sans-serif; /* Fonte atualizada */
             background-color: #ffe4e1;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Remove barra de rolagem horizontal */
         }
         nav {
             background-color: #ff69b4;
-            padding: 20px;
+            padding: 10px;
             text-align: center;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -24,16 +25,16 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Adiciona flex wrap para prevenir overflow */
+            flex-wrap: wrap; /* Flexível para mobile */
         }
         nav ul li {
-            margin: 0 10px; /* Reduzi a margem para evitar overflow */
+            margin: 5px;
         }
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-size: 20px;
-            padding: 10px 20px;
+            font-size: 18px;
+            padding: 8px 15px;
             background-color: #ff1493;
             border-radius: 10px;
             transition: background-color 0.3s;
@@ -48,20 +49,41 @@
         }
         .content {
             text-align: center;
-            padding: 50px;
+            padding: 20px;
         }
         .content h1 {
-            font-size: 50px;
+            font-size: 32px;
             color: #ff1493;
+            margin-bottom: 20px;
         }
-        .content p {
-            font-size: 24px;
-            color: #ff69b4;
+        .content img {
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .content a {
+            font-size: 18px;
+            color: #bf4ed6;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .content a:hover {
+            color: #e27ffb;
         }
         .heart {
             color: #ff1493;
-            font-size: 100px;
+            font-size: 80px;
             animation: beat 1s infinite;
+        }
+        footer {
+            background-color: #ff69b4;
+            text-align: center;
+            padding: 10px;
+            color: white;
+            position: fixed; /* Torna o rodapé fixo */
+            bottom: 0; /* Posiciona na parte inferior */
+            width: 100%; /* Garante que ocupe toda a largura da tela */
+            z-index: 100; /* Certifica-se de que o rodapé ficará sobre outros elementos */
         }
         @keyframes beat {
             0%, 100% {
@@ -71,14 +93,35 @@
                 transform: scale(1.1);
             }
         }
-        footer {
-            background-color: #ff69b4;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            color: white;
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul li a {
+                font-size: 16px;
+                padding: 6px 10px;
+            }
+            .content h1 {
+                font-size: 24px;
+            }
+            .heart {
+                font-size: 60px;
+            }
+            .content img {
+                max-width: 90%;
+            }
+            .content a {
+                font-size: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column; /* Empilha os itens no mobile */
+            }
+            .content h1 {
+                font-size: 20px;
+            }
+            .heart {
+                font-size: 50px;
+            }
         }
     </style>
 </head>
@@ -89,17 +132,17 @@
             <li><a href="index.html">Início</a></li>
             <li><a href="pagina2.html">Princesa</a></li>
             <li><a href="pagina3.html" class="active">A Melhor Playlist</a></li>
-            <li><a href="pagina4.html">Planos Para Viagem</a></li>
+            <li><a href="pagina4.html">Nossos Planos</a></li>
         </ul>
     </nav>
 
     <div class="content">
         <h1>Nossa Playlist, para a gente</h1> 
-        <div style="text-align: center;">
-            <img src="pl1.png" style="max-width: 80%; height: auto; margin-top: 20px; display: block; margin-left: auto; margin-right: auto;">
-            <img src="code.jpeg" style="max-width: 20%; height: auto; margin-top: 10px; display: block; margin-left: auto; margin-right: auto;"> <!-- Escala reduzida -->
+        <div>
+            <img src="pl1.png" alt="Playlist Image" style="max-width: 80%; height: auto; margin: 20px auto; display: block;">
+            <img src="code.jpeg" alt="Spotify Code" style="max-width: 30%; height: auto; margin: 10px auto; display: block;">
         </div>
-        <a href="https://open.spotify.com/playlist/4g1QXqV4unPoeOfUMchVnq?si=OiHfJcjwSD67VVQdmJQdZQ" style="font-size: 24px; color: #bf4ed6; text-decoration: none; margin-top: 20px; display: block; text-align: center;">
+        <a href="https://open.spotify.com/playlist/4g1QXqV4unPoeOfUMchVnq?si=OiHfJcjwSD67VVQdmJQdZQ">
             Clique aqui para ir para Playlist
         </a>
         <p class="heart">❤</p>
